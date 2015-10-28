@@ -1,0 +1,22 @@
+{
+  "name": "dvv/macaron",
+  "description": "Secure Signed Encrypted Tokens for PHP",
+  "keywords": ["token", "secure", "signed", "cookie", "session"],
+  "homepage": "https://github.com/dvv/macaron",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vladimir Dronnikov",
+      "email": "dronnnikov@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Macaron\\": "src/"
+    }
+  }
+}

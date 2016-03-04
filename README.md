@@ -33,6 +33,29 @@ echo \Macaron\Macaron::decode($token, 'ver1STrongsikret');
 // null
 ```
 
+```php
+// overriding serializer
+class Pasta extends \Macaron\Macaron {
+
+  static protected function serialize($data) {
+    return json_encode($data);
+  }
+
+  static protected function unserialize($string) {
+    return json_decode($string, true);
+  }
+
+}
+
+$token = Pasta::encode('whatever JSON can contain', $secret, '+3 seconds');
+echo Pasta::decode($token, 'ver1STrongsikret');
+// 'whatever JSON ca contain'
+
+sleep(3);
+echo Pasta::decode($token, 'ver1STrongsikret');
+// null
+```
+
 See tests for more.
 
 License

@@ -79,7 +79,7 @@ class Macaron {
       $data = new Expiring($data, strtotime($validUntil));
     }
     $key = md5($secret);
-    $enc = self::encrypt(serialize($data), $key);
+    $enc = self::encrypt(self::serialize($data), $key);
     return self::urlsafe_encode(self::sign($enc, $key) . $enc);
   }
 
@@ -90,7 +90,7 @@ class Macaron {
     $enc = substr($data, 20);
     // NB: constant time comparison!
     if (self::constantTimeEquals($sig, self::sign($enc, $key))) {
-      $data = unserialize(self::uncrypt($enc, $key));
+      $data = self::unserialize(self::uncrypt($enc, $key));
       // check whether token expired
       if ($data instanceof Expiring) {
         $data = $data->data();
@@ -99,6 +99,16 @@ class Macaron {
       $data = false;
     }
     return $data;
+  }
+
+  protected static function serialize($data) {
+    return serialize($data);
+    //json_encode($data);
+  }
+
+  protected static function unserialize($string) {
+    return unserialize($string);
+    //return json_decode($string);
   }
 
 }

@@ -5,10 +5,11 @@
   "homepage": "https://github.com/dvv/macaron",
   "type": "library",
   "license": "MIT",
+  "version": "1,2",
   "authors": [
     {
       "name": "Vladimir Dronnikov",
-      "email": "dronnnikov@gmail.com"
+      "email": "dronnikov@gmail.com"
     }
   ],
   "require": {

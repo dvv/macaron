@@ -7,7 +7,7 @@ Library for serializing PHP-serializable data to signed encrypted strings and re
 
 Basically a port of my [Termit](https://github.com/dvv/termit) library.
 
-Now stopped using `mcrypt` extension.
+Now stopped using `mcrypt` extension, see [here](https://wiki.php.net/rfc/mcrypt-viking-funeral).
 
 Usage
 -----

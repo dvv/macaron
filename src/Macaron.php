@@ -63,14 +63,14 @@ class Macaron {
   }
 
   private static function encrypt($data, $key) {
-    $iv = mcrypt_create_iv(16, MCRYPT_DEV_URANDOM);
-    $encrypted = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key, $data, MCRYPT_MODE_CFB, $iv);
+    $iv = openssl_random_pseudo_bytes(16);
+    $encrypted = openssl_encrypt($data, 'aes-256-cfb', $key, OPENSSL_RAW_DATA, $iv);
     return $iv . $encrypted;
   }
 
   private static function uncrypt($data, $key) {
     $iv = substr($data, 0, 16);
-    $uncrypted = mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $key, substr($data, 16), MCRYPT_MODE_CFB, $iv);
+    $uncrypted = openssl_decrypt(substr($data, 16), 'aes-256-cfb', $key, OPENSSL_RAW_DATA, $iv);
     return $uncrypted;
   }
 

@@ -41,7 +41,7 @@ class MacaronJSONTest extends \PHPUnit_Framework_TestCase {
     $this->assertSame($data, Pasta::decode($token, $secret));
     sleep(1);
     $this->assertSame($data, Pasta::decode($token, $secret));
-    sleep(1);
+    sleep(2);
     $this->assertNull(Pasta::decode($token, $secret));
   }
 

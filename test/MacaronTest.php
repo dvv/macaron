@@ -35,6 +35,8 @@ class MacaronTest extends \PHPUnit_Framework_TestCase {
     $data = [1, 'foo' => 'bar'];
     $token = Macaron::encode($data, $secret);
     $this->assertFalse(Macaron::decode($token . '1', $secret));
+    $this->assertFalse(Macaron::decode($token . '?', $secret));
+    $this->assertFalse(Macaron::decode($token . '*', $secret));
     $this->assertFalse(Macaron::decode($token, $secret . '1'));
     $this->assertFalse(Macaron::decode($token . '1', $secret . '2'));
   }
